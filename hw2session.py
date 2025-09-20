@@ -19,13 +19,16 @@ class HW2Session(Session):
         break
     
     if dir is None:
-      return f'{dir_name} does not exist'
+      print(f'{dir_name} does not exist')
+      return False
     
     if dir.children:
-      return f'{dir_name} is not empty'
+      print(f'{dir_name} is not empty')
+      return False
     
     if dir.node_type != 'directory':
-      return f'{dir_name} is not a directory'
+      print(f'{dir_name} is not a directory')
+      return False
     
     self.curr_dir.children.remove(dir)
     dir.parent = None
@@ -43,10 +46,12 @@ class HW2Session(Session):
         break
       
     if file is None:
-      return f'{file_name} does not exist'
+      print(f'{file_name} does not exist')
+      return False
     
     if file.node_type == 'directory':
-      return f'{file_name} is a directory'
+      print(f'{file_name} is a directory')
+      return False
     
     self.curr_dir.children.remove(file)
     file.parent = None
@@ -83,4 +88,6 @@ class HW2Session(Session):
             tree(child)
 
     tree(self.root)
-    return '\n'.join(paths)
+    result = '\n'.join(paths)
+    print(result)
+    return result
