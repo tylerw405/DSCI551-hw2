@@ -90,4 +90,3 @@ class HW2Session(Session):
     tree(self.root)
     result = '\n'.join(paths)
     print(result)
-    return result
